@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#11151b">
+  <meta name="description" content="Portfolio of Saul Cyvan Soberano, BSIT graduate focused on IT support, systems administration, software asset management, and web development.">
+  <meta property="og:title" content="Saul Cyvan Soberano | IT Support & Web Development">
+  <meta property="og:description" content="IT support, software asset management, Linux administration, and web development projects.">
+  <meta property="og:type" content="website">
+  <title>Saul Cyvan Soberano | IT Support & Web Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #10141a;
+      --surface: #171e27;
+      --surface-2: #1c2530;
+      --border: #2b3745;
+      --text: #f2f5f7;
+      --muted: #a8b3c1;
+      --subtle: #718093;
+      --amber: #f0b45f;
+      --mint: #68dfb7;
+      --mono: "DM Mono", monospace;
+      --sans: "Inter", sans-serif;
+      --width: 1040px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(ellipse at 12% 0%, rgba(240,180,95,.09), transparent 34rem),
+        radial-gradient(ellipse at 90% 40%, rgba(104,223,183,.06), transparent 34rem),
+        var(--bg);
+      color: var(--text);
+      font: 16px/1.7 var(--sans);
+    }
+    a { color: var(--amber); text-decoration: none; }
+    a:hover { color: var(--mint); }
+    a:focus-visible, button:focus-visible { outline: 2px solid var(--mint); outline-offset: 4px; }
+    .container { width: min(var(--width), calc(100% - 40px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); }
+    .muted { color: var(--muted); }
+    .eyebrow { color: var(--mint); font: 12px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+
+    .topbar {
+      position: sticky; top: 0; z-index: 20;
+      border-bottom: 1px solid rgba(43,55,69,.85);
+      background: rgba(16,20,26,.88);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      min-height: 66px; display: flex; align-items: center;
+      justify-content: space-between; gap: 20px;
+    }
+    .brand { color: var(--text); font: 500 14px var(--mono); white-space: nowrap; }
+    .brand span { color: var(--mint); }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 22px; }
+    .nav-links a { color: var(--muted); font-size: 13px; }
+    .nav-links a:hover { color: var(--amber); }
+
+    .hero { padding: 76px 0 46px; }
+    .terminal {
+      overflow: hidden; border: 1px solid var(--border);
+      border-radius: 14px; background: rgba(23,30,39,.94);
+      box-shadow: 0 22px 70px rgba(0,0,0,.22);
+    }
+    .terminal-bar {
+      display: flex; align-items: center; gap: 8px;
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      background: rgba(255,255,255,.018); color: var(--subtle);
+      font: 12px var(--mono);
+    }
+    .dot { width: 9px; height: 9px; border-radius: 50%; }
+    .red { background: #ed7769; } .yellow { background: #e8c36b; } .green { background: #68c99e; }
+    .terminal-title { margin-left: 8px; }
+    .hero-content { padding: clamp(25px, 5vw, 54px); }
+    .hero-grid { display: grid; grid-template-columns: 1fr auto; align-items: start; gap: 34px; }
+    .prompt { margin-bottom: 14px; color: var(--mint); font: 13px var(--mono); }
+    .prompt b { color: var(--amber); font-weight: 500; }
+    h1 { max-width: 720px; margin: 0; font-size: clamp(34px, 6vw, 58px); line-height: 1.08; letter-spacing: -.055em; }
+    h1 .accent { color: var(--amber); }
+    .role { margin: 18px 0 14px; color: var(--mint); font: 14px var(--mono); }
+    .intro { max-width: 700px; margin: 0; color: var(--muted); font-size: 16px; }
+    .avatar {
+      display: grid; place-items: center; width: 112px; aspect-ratio: 1;
+      border: 1px solid var(--amber); border-radius: 16px;
+      background: linear-gradient(145deg, #293443, #151b23);
+      color: var(--amber); font: 700 32px var(--mono);
+      box-shadow: 0 0 0 6px rgba(240,180,95,.06);
+      overflow: hidden;
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .hero-meta { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 28px; color: var(--muted); font: 12px var(--mono); }
+    .hero-meta strong { color: var(--mint); font-weight: 500; }
+    .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .button {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 42px; padding: 9px 15px; border: 1px solid var(--amber);
+      border-radius: 7px; color: var(--amber); font: 13px var(--mono);
+      transition: .2s ease;
+    }
+    .button.primary { background: var(--amber); color: #15191e; }
+    .button:hover { transform: translateY(-2px); background: var(--mint); border-color: var(--mint); color: #101820; }
+
+    section { padding: 34px 0 8px; }
+    .section-heading { display: flex; align-items: center; gap: 14px; margin: 0 0 18px; }
+    .section-heading h2 { margin: 0; color: var(--amber); font: 13px var(--mono); letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+    .section-heading::after { content: ""; height: 1px; flex: 1; background: var(--border); }
+    .panel { padding: clamp(20px, 3vw, 30px); border: 1px solid var(--border); border-radius: 12px; background: rgba(23,30,39,.82); }
+    .about-facts { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px 28px; }
+    .fact { display: flex; gap: 12px; min-width: 0; font: 13px/1.6 var(--mono); }
+    .fact .key { min-width: 88px; color: var(--subtle); }
+    .fact .value { color: var(--text); }
+    .about-copy { max-width: 850px; margin: 24px 0 0; padding-top: 22px; border-top: 1px solid var(--border); color: var(--muted); }
+    .about-copy p { margin: 0 0 14px; }
+    .about-copy p:last-child { margin-bottom: 0; }
+
+    .skill-groups { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .skill-group { padding: 18px; border: 1px solid var(--border); border-radius: 9px; background: rgba(255,255,255,.015); }
+    .skill-group h3 { margin: 0 0 13px; color: var(--mint); font: 12px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+    .chip { padding: 6px 9px; border: 1px solid #394858; border-radius: 5px; color: var(--text); background: #202a35; font: 11px var(--mono); }
+
+    .projects { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 14px; }
+    .project {
+      display: flex; flex-direction: column; min-height: 250px;
+      padding: 22px; border: 1px solid var(--border); border-radius: 11px;
+      background: rgba(23,30,39,.82); transition: transform .2s ease, border-color .2s ease;
+    }
+    .project:hover { transform: translateY(-3px); border-color: #68788b; }
+    .project-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+    .project-id { color: var(--subtle); font: 11px var(--mono); }
+    .status { color: var(--mint); font: 11px var(--mono); }
+    .project h3 { margin: 17px 0 8px; font-size: 18px; line-height: 1.35; }\n    .project-role { margin: 0 0 10px; color: var(--amber); font: 11px var(--mono); }
+    .project p { margin: 0 0 18px; color: var(--muted); font-size: 13px; }
+    .project .chips { margin-top: auto; }
+    .project-links { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 17px; font: 12px var(--mono); }
+    .project-links a::before { content: "↗ "; color: var(--subtle); }
+
+    .credentials { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 12px; }
+    .credential { padding: 17px; border: 1px solid var(--border); border-radius: 9px; background: rgba(255,255,255,.015); }
+    .credential h3 { margin: 0 0 5px; font-size: 14px; }
+    .credential p { margin: 0; color: var(--subtle); font: 11px/1.6 var(--mono); }
+    .credential a { display: inline-block; margin-top: 10px; font: 12px var(--mono); }
+
+    .contact-grid { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 20px; }
+    .contact-label { display: block; margin-bottom: 5px; color: var(--subtle); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .1em; }
+    .contact-value { overflow-wrap: anywhere; color: var(--text); font-size: 14px; }
+    footer { padding: 55px 0 35px; text-align: center; color: var(--subtle); font: 11px var(--mono); }
+
+    @media (max-width: 700px) {
+      .nav { align-items: flex-start; flex-direction: column; padding: 13px 0; gap: 8px; }
+      .nav-links { gap: 14px; }
+      .hero { padding-top: 38px; }
+      .hero-grid { grid-template-columns: 1fr; }
+      .avatar { grid-row: 1; width: 78px; font-size: 24px; }
+      .about-facts, .skill-groups, .projects, .credentials, .contact-grid { grid-template-columns: 1fr; }
+      .fact { flex-wrap: wrap; gap: 4px 10px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#home"><span>saul@portfolio</span>:~$</a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+
+  <main class="container">
+    <header class="hero" id="home">
+      <div class="terminal">
+        <div class="terminal-bar" aria-hidden="true">
+          <span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span>
+          <span class="terminal-title">saul@portfolio: ~/projects</span>
+        </div>
+        <div class="hero-content">
+          <div class="hero-grid">
+            <div>
+              <div class="prompt"><b>saul</b>@portfolio:~$ whoami</div>
+              <h1>Saul Cyvan <span class="accent">Soberano</span></h1>
+              <p class="role">IT SUPPORT · SOFTWARE ASSET MANAGEMENT · WEB DEVELOPMENT</p>
+              <p class="intro">BSIT graduate who enjoys solving technical problems, maintaining reliable systems, and building useful web experiences. I work across IT support, Linux and Windows environments, software asset management, and front-end development.</p>
+            </div>
+            <div class="avatar" aria-label="Profile initials">
+              <img src="photo.jpg" alt="Saul Cyvan Soberano" onerror="this.remove(); this.parentElement.textContent='SS';">
+            </div>
+          </div>
+          <div class="hero-meta">
+            <span>● status: <strong>open to opportunities</strong></span>
+            <span>location: <strong>Negros Occidental, PH</strong></span>
+            <span>education: <strong>BSIT · 2026</strong></span>
+          </div>
+          <div class="actions">
+            <a class="button primary" href="Saul Soberano-Resume.pdf" target="_blank" rel="noopener">View résumé ↗</a>
+            <a class="button" href="Saul Soberano-Resume.pdf" download>Download résumé ↓</a>
+            <a class="button" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="section-heading"><h2>01 / About me</h2></div>
+      <div class="panel">
+        <div class="about-facts">
+          <div class="fact"><span class="key">education</span><span class="value">BS Information Technology, Kabankalan Catholic College (2026)</span></div>
+          <div class="fact"><span class="key">location</span><span class="value">Negros Occidental, Philippines</span></div>
+          <div class="fact"><span class="key">focus</span><span class="value">IT support, helpdesk, systems administration, SAM</span></div>
+          <div class="fact"><span class="key">also_build</span><span class="value">Web applications and responsive interfaces</span></div>
+        </div>
+        <div class="about-copy">
+          <p>I like fixing things properly, not just patching them. Whether it's a computer that will not boot, a driver conflict, or an unreliable network connection, I prefer to investigate the cause, test a solution, and document what changed.</p>
+          <p>I have hands-on experience using Linux, installing and configuring it, and working with the command line for system setup and troubleshooting. I value clear communication, careful troubleshooting, and solutions that are practical to maintain.</p>
+          <p>In Software Asset Management, I set up Snipe-IT in a Linux environment, including its database and web server, to support the organization and tracking of IT assets. I am also continuing to build my web development skills through freelance and team projects.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="section-heading"><h2>02 / Technical skills</h2></div>
+      <div class="panel">
+        <div class="skill-groups">
+          <div class="skill-group">
+            <h3>IT support & systems</h3>
+            <div class="chips">
+              <span class="chip">Hardware troubleshooting</span><span class="chip">Windows installation</span>
+              <span class="chip">Windows support</span><span class="chip">Linux</span>
+              <span class="chip">Linux administration</span><span class="chip">Networking fundamentals</span>
+              <span class="chip">System diagnostics</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Software asset management</h3>
+            <div class="chips">
+              <span class="chip">Snipe-IT</span><span class="chip">Asset inventory</span>
+              <span class="chip">Database setup</span><span class="chip">Web server setup</span>
+              <span class="chip">IT asset tracking</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Web development</h3>
+            <div class="chips">
+              <span class="chip">HTML</span><span class="chip">CSS</span><span class="chip">JavaScript</span>
+              <span class="chip">PHP</span><span class="chip">Laravel</span><span class="chip">React</span>
+              <span class="chip">TypeScript</span><span class="chip">Tailwind CSS</span>
+              <span class="chip">Node.js</span>
+            </div>
+          </div>
+          <div class="skill-group">
+            <h3>Tools & workflow</h3>
+            <div class="chips">
+              <span class="chip">Git</span><span class="chip">GitHub</span>
+              <span class="chip">MySQL</span><span class="chip">Apache</span>
+              <span class="chip">Nginx</span><span class="chip">Command line</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="section-heading"><h2>03 / Project showcase</h2></div>
+      <div class="projects">
+        <article class="project">
+          <div class="project-top"><span class="project-id">PROJECT_001</span><span class="status">● Capstone</span></div>
+          <h3>Barangay Information Management System</h3>\n          <div class="project-role">MY ROLE: FRONT-END DEVELOPER</div>
+          <p>A capstone system designed to help barangay staff manage resident profiles, household information, document requests, clearances, certifications, and reports. I contributed to the front-end interface and user-facing workflows as part of the development team.</p>
+          <div class="chips"><span class="chip">React.js</span><span class="chip">Bootstrap</span><span class="chip">Node.js</span><span class="chip">Express.js</span><span class="chip">MySQL</span></div>
+        </article>
+
+        <article class="project">
+          <div class="project-top"><span class="project-id">PROJECT_002</span><span class="status">● Freelance</span></div>
+          <h3>Ishabella · Solar Products Web App</h3>\n          <div class="project-role">MY ROLE: FREELANCE FRONT-END DEVELOPER</div>
+          <p>A freelance team project for a solar products business. I worked on the customer-facing interface and responsive product presentation, helping create a clear browsing experience for visitors exploring solar products.</p>
+          <div class="chips"><span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Tailwind CSS</span><span class="chip">Node.js</span></div>
+          <div class="project-links"><span class="muted">Repository link can be added when available</span></div>
+        </article>
+
+        <article class="project">
+          <div class="project-top"><span class="project-id">PROJECT_003</span><span class="status">● SAM / ApusFly</span></div>
+          <h3>IT Asset Management · Snipe-IT</h3>\n          <div class="project-role">MY ROLE: SOFTWARE ASSET MANAGER</div>
+          <p>Installed and configured Snipe-IT in a Linux environment, including the application, database, and web server setup. The system was prepared to help the team organize and track IT assets as part of my Software Asset Management responsibilities.</p>
+          <div class="chips"><span class="chip">Snipe-IT</span><span class="chip">Linux</span><span class="chip">PHP</span><span class="chip">MariaDB</span><span class="chip">Apache / Nginx</span></div>
+        </article>
+
+        <article class="project">
+          <div class="project-top"><span class="project-id">PROJECT_004</span><span class="status">● In progress</span></div>
+          <h3>ApusFly · Team Software Project</h3>\n          <div class="project-role">MY ROLE: SOFTWARE ASSET MANAGER</div>
+          <p>Part of a remote team developing a mobile application and website. My responsibilities include Software Asset Management and helping the team keep its software and IT asset information organized.</p>
+          <div class="chips"><span class="chip">Software Asset Management</span><span class="chip">Team collaboration</span><span class="chip">IT operations</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="section-heading"><h2>04 / Certifications & learning</h2></div>
+      <div class="credentials">
+        <article class="credential">
+          <h3>Hardware and Upgrade Support</h3>
+          <p>Cisco Networking Academy · DICT-ITU DTC Initiative<br>Completed 22 September 2026</p>
+          <a href="https://www.credly.com/badges/203048d4-a7dd-4d02-918b-18573c9ac50a" target="_blank" rel="noopener">Verify credential ↗</a>
+        </article>
+        <article class="credential">
+          <h3>Introduction to Modern AI</h3>
+          <p>Cisco Networking Academy · DICT-ITU DTC Initiative<br>Completed 23 September 2026</p>
+          <a href="https://www.credly.com/badges/7b1668dc-d5f8-4cff-a649-57ac6e1937ef" target="_blank" rel="noopener">Verify credential ↗</a>
+        </article>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="section-heading"><h2>05 / Contact</h2></div>
+      <div class="panel">
+        <div class="contact-grid">
+          <div><span class="contact-label">Email</span><a class="contact-value" href="mailto:cyvan1337@gmail.com">cyvan1337@gmail.com</a></div>
+          <div><span class="contact-label">GitHub</span><a class="contact-value" href="https://github.com/YOUR-GITHUB-USERNAME" target="_blank" rel="noopener">Add your GitHub profile URL</a></div>
+          <div><span class="contact-label">LinkedIn</span><a class="contact-value" href="https://www.linkedin.com/in/saul-cyvan-soberano-231477405" target="_blank" rel="noopener">Saul Cyvan Soberano ↗</a></div>
+          <div><span class="contact-label">Location</span><span class="contact-value">Negros Occidental, Philippines</span></div>
+        </div>
+      </div>
+    </section>
+
+    <footer>built by saul · powered by curiosity and coffee · <span style="color:var(--mint)">exit 0</span></footer>
+  </main>
+</body>
+</html>
